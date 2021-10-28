@@ -1,0 +1,1217 @@
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"bsp.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SystemClock_Config,"ax",%progbits
+  18              		.align	1
+  19              		.arch armv7e-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	SystemClock_Config:
+  26              	.LFB133:
+  27              		.file 1 "../../../../development/system/boards/stm_dev_bsp/bsp.c"
+   1:../../../../development/system/boards/stm_dev_bsp/bsp.c **** #include "bsp.h"
+   2:../../../../development/system/boards/stm_dev_bsp/bsp.c **** #define max(a,b) (a)>(b)?a:b
+   3:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+   4:../../../../development/system/boards/stm_dev_bsp/bsp.c **** static int SystemClock_Config(void)
+   5:../../../../development/system/boards/stm_dev_bsp/bsp.c **** {
+  28              		.loc 1 5 1
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 88
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 96B0     		sub	sp, sp, #88
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 96
+  40 0004 00AF     		add	r7, sp, #0
+  41              	.LCFI2:
+  42              		.cfi_def_cfa_register 7
+   6:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct;
+   7:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitTypeDef RCC_OscInitStruct;
+   8:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   HAL_StatusTypeDef  ret = HAL_OK;
+  43              		.loc 1 8 22
+  44 0006 0023     		movs	r3, #0
+  45 0008 87F85730 		strb	r3, [r7, #87]
+  46              	.LBB2:
+   9:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  10:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   /* Enable Power Control clock */
+  11:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   __HAL_RCC_PWR_CLK_ENABLE();
+  47              		.loc 1 11 3
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 2
+
+
+  48 000c 0023     		movs	r3, #0
+  49 000e BB60     		str	r3, [r7, #8]
+  50 0010 2E4B     		ldr	r3, .L6
+  51 0012 1B6C     		ldr	r3, [r3, #64]
+  52 0014 2D4A     		ldr	r2, .L6
+  53 0016 43F08053 		orr	r3, r3, #268435456
+  54 001a 1364     		str	r3, [r2, #64]
+  55 001c 2B4B     		ldr	r3, .L6
+  56 001e 1B6C     		ldr	r3, [r3, #64]
+  57 0020 03F08053 		and	r3, r3, #268435456
+  58 0024 BB60     		str	r3, [r7, #8]
+  59 0026 BB68     		ldr	r3, [r7, #8]
+  60              	.LBE2:
+  61              	.LBB3:
+  12:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  13:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   /* The voltage scaling allows optimizing the power consumption when the device is
+  14:../../../../development/system/boards/stm_dev_bsp/bsp.c ****      clocked below the maximum system frequency, to update the voltage scaling value
+  15:../../../../development/system/boards/stm_dev_bsp/bsp.c ****      regarding system frequency refer to product datasheet.  */
+  16:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+  62              		.loc 1 16 3
+  63 0028 0023     		movs	r3, #0
+  64 002a 7B60     		str	r3, [r7, #4]
+  65 002c 284B     		ldr	r3, .L6+4
+  66 002e 1B68     		ldr	r3, [r3]
+  67 0030 274A     		ldr	r2, .L6+4
+  68 0032 43F44043 		orr	r3, r3, #49152
+  69 0036 1360     		str	r3, [r2]
+  70 0038 254B     		ldr	r3, .L6+4
+  71 003a 1B68     		ldr	r3, [r3]
+  72 003c 03F44043 		and	r3, r3, #49152
+  73 0040 7B60     		str	r3, [r7, #4]
+  74 0042 7B68     		ldr	r3, [r7, #4]
+  75              	.LBE3:
+  17:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  18:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   /* Enable HSE Oscillator and activate PLL with HSE as source */
+  19:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  76              		.loc 1 19 36
+  77 0044 0123     		movs	r3, #1
+  78 0046 FB60     		str	r3, [r7, #12]
+  20:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitStruct.HSEState       = RCC_HSE_ON;
+  79              		.loc 1 20 36
+  80 0048 4FF48033 		mov	r3, #65536
+  81 004c 3B61     		str	r3, [r7, #16]
+  21:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitStruct.PLL.PLLState   = RCC_PLL_ON;
+  82              		.loc 1 21 36
+  83 004e 0223     		movs	r3, #2
+  84 0050 7B62     		str	r3, [r7, #36]
+  22:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitStruct.PLL.PLLSource  = RCC_PLLSOURCE_HSE;
+  85              		.loc 1 22 36
+  86 0052 4FF48003 		mov	r3, #4194304
+  87 0056 BB62     		str	r3, [r7, #40]
+  23:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitStruct.PLL.PLLM       = 8;
+  88              		.loc 1 23 36
+  89 0058 0823     		movs	r3, #8
+  90 005a FB62     		str	r3, [r7, #44]
+  24:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitStruct.PLL.PLLN       = 200;
+  91              		.loc 1 24 36
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 3
+
+
+  92 005c C823     		movs	r3, #200
+  93 005e 3B63     		str	r3, [r7, #48]
+  25:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitStruct.PLL.PLLP       = RCC_PLLP_DIV2;
+  94              		.loc 1 25 36
+  95 0060 0223     		movs	r3, #2
+  96 0062 7B63     		str	r3, [r7, #52]
+  26:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitStruct.PLL.PLLQ       = 7;
+  97              		.loc 1 26 36
+  98 0064 0723     		movs	r3, #7
+  99 0066 BB63     		str	r3, [r7, #56]
+  27:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_OscInitStruct.PLL.PLLR       = 2;
+ 100              		.loc 1 27 36
+ 101 0068 0223     		movs	r3, #2
+ 102 006a FB63     		str	r3, [r7, #60]
+  28:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  29:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   ret = HAL_RCC_OscConfig(&RCC_OscInitStruct);
+ 103              		.loc 1 29 9
+ 104 006c 07F10C03 		add	r3, r7, #12
+ 105 0070 1846     		mov	r0, r3
+ 106 0072 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 107 0076 0346     		mov	r3, r0
+ 108 0078 87F85730 		strb	r3, [r7, #87]
+  30:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   if (ret != HAL_OK) {
+ 109              		.loc 1 30 6
+ 110 007c 97F85730 		ldrb	r3, [r7, #87]	@ zero_extendqisi2
+ 111 0080 002B     		cmp	r3, #0
+ 112 0082 02D0     		beq	.L2
+  31:../../../../development/system/boards/stm_dev_bsp/bsp.c ****     return WST_ERR;
+ 113              		.loc 1 31 12
+ 114 0084 4FF0FF33 		mov	r3, #-1
+ 115 0088 1BE0     		b	.L5
+ 116              	.L2:
+  32:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   }
+  33:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  34:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
+  35:../../../../development/system/boards/stm_dev_bsp/bsp.c ****      clocks dividers */
+  36:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | 
+ 117              		.loc 1 36 31
+ 118 008a 0F23     		movs	r3, #15
+ 119 008c 3B64     		str	r3, [r7, #64]
+  37:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_PLLCLK;
+ 120              		.loc 1 37 36
+ 121 008e 0223     		movs	r3, #2
+ 122 0090 7B64     		str	r3, [r7, #68]
+  38:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_ClkInitStruct.AHBCLKDivider  = RCC_SYSCLK_DIV1;
+ 123              		.loc 1 38 36
+ 124 0092 0023     		movs	r3, #0
+ 125 0094 BB64     		str	r3, [r7, #72]
+  39:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 126              		.loc 1 39 36
+ 127 0096 4FF48053 		mov	r3, #4096
+ 128 009a FB64     		str	r3, [r7, #76]
+  40:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 129              		.loc 1 40 36
+ 130 009c 0023     		movs	r3, #0
+ 131 009e 3B65     		str	r3, [r7, #80]
+  41:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 4
+
+
+  42:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   ret = HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3);
+ 132              		.loc 1 42 9
+ 133 00a0 07F14003 		add	r3, r7, #64
+ 134 00a4 0321     		movs	r1, #3
+ 135 00a6 1846     		mov	r0, r3
+ 136 00a8 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 137 00ac 0346     		mov	r3, r0
+ 138 00ae 87F85730 		strb	r3, [r7, #87]
+  43:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   if (ret != HAL_OK) {
+ 139              		.loc 1 43 6
+ 140 00b2 97F85730 		ldrb	r3, [r7, #87]	@ zero_extendqisi2
+ 141 00b6 002B     		cmp	r3, #0
+ 142 00b8 02D0     		beq	.L4
+  44:../../../../development/system/boards/stm_dev_bsp/bsp.c ****     return WST_ERR;
+ 143              		.loc 1 44 12
+ 144 00ba 4FF0FF33 		mov	r3, #-1
+ 145 00be 00E0     		b	.L5
+ 146              	.L4:
+  45:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   }
+  46:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  47:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   return WST_OK;
+ 147              		.loc 1 47 10
+ 148 00c0 0023     		movs	r3, #0
+ 149              	.L5:
+  48:../../../../development/system/boards/stm_dev_bsp/bsp.c **** }
+ 150              		.loc 1 48 1 discriminator 1
+ 151 00c2 1846     		mov	r0, r3
+ 152 00c4 5837     		adds	r7, r7, #88
+ 153              	.LCFI3:
+ 154              		.cfi_def_cfa_offset 8
+ 155 00c6 BD46     		mov	sp, r7
+ 156              	.LCFI4:
+ 157              		.cfi_def_cfa_register 13
+ 158              		@ sp needed
+ 159 00c8 80BD     		pop	{r7, pc}
+ 160              	.L7:
+ 161 00ca 00BF     		.align	2
+ 162              	.L6:
+ 163 00cc 00380240 		.word	1073887232
+ 164 00d0 00700040 		.word	1073770496
+ 165              		.cfi_endproc
+ 166              	.LFE133:
+ 168              		.section	.text.bsp_board_bringup,"ax",%progbits
+ 169              		.align	1
+ 170              		.global	bsp_board_bringup
+ 171              		.syntax unified
+ 172              		.thumb
+ 173              		.thumb_func
+ 174              		.fpu fpv4-sp-d16
+ 176              	bsp_board_bringup:
+ 177              	.LFB134:
+  49:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  50:../../../../development/system/boards/stm_dev_bsp/bsp.c **** void bsp_board_bringup(void)
+  51:../../../../development/system/boards/stm_dev_bsp/bsp.c **** {
+ 178              		.loc 1 51 1
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 5
+
+
+ 181              		@ frame_needed = 1, uses_anonymous_args = 0
+ 182 0000 80B5     		push	{r7, lr}
+ 183              	.LCFI5:
+ 184              		.cfi_def_cfa_offset 8
+ 185              		.cfi_offset 7, -8
+ 186              		.cfi_offset 14, -4
+ 187 0002 82B0     		sub	sp, sp, #8
+ 188              	.LCFI6:
+ 189              		.cfi_def_cfa_offset 16
+ 190 0004 00AF     		add	r7, sp, #0
+ 191              	.LCFI7:
+ 192              		.cfi_def_cfa_register 7
+  52:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   HAL_Init();
+ 193              		.loc 1 52 3
+ 194 0006 FFF7FEFF 		bl	HAL_Init
+ 195              	.LBB4:
+  53:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  54:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   WST_ERR_CHECK(SystemClock_Config());
+ 196              		.loc 1 54 3
+ 197 000a FFF7FEFF 		bl	SystemClock_Config
+ 198 000e 7860     		str	r0, [r7, #4]
+ 199 0010 7B68     		ldr	r3, [r7, #4]
+ 200 0012 002B     		cmp	r3, #0
+ 201 0014 01D0     		beq	.L10
+ 202              		.loc 1 54 3 is_stmt 0 discriminator 1
+ 203 0016 FFF7FEFF 		bl	error_handler
+ 204              	.L10:
+ 205              	.LBE4:
+  55:../../../../development/system/boards/stm_dev_bsp/bsp.c **** }
+ 206              		.loc 1 55 1 is_stmt 1
+ 207 001a 00BF     		nop
+ 208 001c 0837     		adds	r7, r7, #8
+ 209              	.LCFI8:
+ 210              		.cfi_def_cfa_offset 8
+ 211 001e BD46     		mov	sp, r7
+ 212              	.LCFI9:
+ 213              		.cfi_def_cfa_register 13
+ 214              		@ sp needed
+ 215 0020 80BD     		pop	{r7, pc}
+ 216              		.cfi_endproc
+ 217              	.LFE134:
+ 219              		.section	.text.bsp_uart_init,"ax",%progbits
+ 220              		.align	1
+ 221              		.global	bsp_uart_init
+ 222              		.syntax unified
+ 223              		.thumb
+ 224              		.thumb_func
+ 225              		.fpu fpv4-sp-d16
+ 227              	bsp_uart_init:
+ 228              	.LFB135:
+  56:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  57:../../../../development/system/boards/stm_dev_bsp/bsp.c **** /************************************************************
+  58:../../../../development/system/boards/stm_dev_bsp/bsp.c ****  *************************** UART ***************************
+  59:../../../../development/system/boards/stm_dev_bsp/bsp.c ****  ***********************************************************/
+  60:../../../../development/system/boards/stm_dev_bsp/bsp.c **** int bsp_uart_init(wst_uart_handle_t *handle)
+  61:../../../../development/system/boards/stm_dev_bsp/bsp.c **** {
+ 229              		.loc 1 61 1
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 6
+
+
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 40
+ 232              		@ frame_needed = 1, uses_anonymous_args = 0
+ 233 0000 80B5     		push	{r7, lr}
+ 234              	.LCFI10:
+ 235              		.cfi_def_cfa_offset 8
+ 236              		.cfi_offset 7, -8
+ 237              		.cfi_offset 14, -4
+ 238 0002 8AB0     		sub	sp, sp, #40
+ 239              	.LCFI11:
+ 240              		.cfi_def_cfa_offset 48
+ 241 0004 00AF     		add	r7, sp, #0
+ 242              	.LCFI12:
+ 243              		.cfi_def_cfa_register 7
+ 244 0006 7860     		str	r0, [r7, #4]
+ 245              	.LBB5:
+  62:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+  63:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  64:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   WST_UART_TX_GPIO_CLK_ENABLE();
+ 246              		.loc 1 64 3
+ 247 0008 0023     		movs	r3, #0
+ 248 000a 3B61     		str	r3, [r7, #16]
+ 249 000c 344B     		ldr	r3, .L15
+ 250 000e 1B6B     		ldr	r3, [r3, #48]
+ 251 0010 334A     		ldr	r2, .L15
+ 252 0012 43F00103 		orr	r3, r3, #1
+ 253 0016 1363     		str	r3, [r2, #48]
+ 254 0018 314B     		ldr	r3, .L15
+ 255 001a 1B6B     		ldr	r3, [r3, #48]
+ 256 001c 03F00103 		and	r3, r3, #1
+ 257 0020 3B61     		str	r3, [r7, #16]
+ 258 0022 3B69     		ldr	r3, [r7, #16]
+ 259              	.LBE5:
+ 260              	.LBB6:
+  65:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   WST_UART_RX_GPIO_CLK_ENABLE();
+ 261              		.loc 1 65 3
+ 262 0024 0023     		movs	r3, #0
+ 263 0026 FB60     		str	r3, [r7, #12]
+ 264 0028 2D4B     		ldr	r3, .L15
+ 265 002a 1B6B     		ldr	r3, [r3, #48]
+ 266 002c 2C4A     		ldr	r2, .L15
+ 267 002e 43F00103 		orr	r3, r3, #1
+ 268 0032 1363     		str	r3, [r2, #48]
+ 269 0034 2A4B     		ldr	r3, .L15
+ 270 0036 1B6B     		ldr	r3, [r3, #48]
+ 271 0038 03F00103 		and	r3, r3, #1
+ 272 003c FB60     		str	r3, [r7, #12]
+ 273 003e FB68     		ldr	r3, [r7, #12]
+ 274              	.LBE6:
+ 275              	.LBB7:
+  66:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  67:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   WST_UART_CLK_ENABLE();
+ 276              		.loc 1 67 3
+ 277 0040 0023     		movs	r3, #0
+ 278 0042 BB60     		str	r3, [r7, #8]
+ 279 0044 264B     		ldr	r3, .L15
+ 280 0046 1B6C     		ldr	r3, [r3, #64]
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 7
+
+
+ 281 0048 254A     		ldr	r2, .L15
+ 282 004a 43F40033 		orr	r3, r3, #131072
+ 283 004e 1364     		str	r3, [r2, #64]
+ 284 0050 234B     		ldr	r3, .L15
+ 285 0052 1B6C     		ldr	r3, [r3, #64]
+ 286 0054 03F40033 		and	r3, r3, #131072
+ 287 0058 BB60     		str	r3, [r7, #8]
+ 288 005a BB68     		ldr	r3, [r7, #8]
+ 289              	.LBE7:
+  68:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  69:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Pin       = WST_UART_TX_PIN;
+ 290              		.loc 1 69 29
+ 291 005c 0423     		movs	r3, #4
+ 292 005e 7B61     		str	r3, [r7, #20]
+  70:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
+ 293              		.loc 1 70 29
+ 294 0060 0223     		movs	r3, #2
+ 295 0062 BB61     		str	r3, [r7, #24]
+  71:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Pull      = GPIO_PULLUP;
+ 296              		.loc 1 71 29
+ 297 0064 0123     		movs	r3, #1
+ 298 0066 FB61     		str	r3, [r7, #28]
+  72:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Speed     = GPIO_SPEED_HIGH;
+ 299              		.loc 1 72 29
+ 300 0068 0323     		movs	r3, #3
+ 301 006a 3B62     		str	r3, [r7, #32]
+  73:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Alternate = WST_UART_TX_AF;
+ 302              		.loc 1 73 29
+ 303 006c 0723     		movs	r3, #7
+ 304 006e 7B62     		str	r3, [r7, #36]
+  74:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  75:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   HAL_GPIO_Init(WST_UART_TX_GPIO_PORT, &GPIO_InitStruct);
+ 305              		.loc 1 75 3
+ 306 0070 07F11403 		add	r3, r7, #20
+ 307 0074 1946     		mov	r1, r3
+ 308 0076 1B48     		ldr	r0, .L15+4
+ 309 0078 FFF7FEFF 		bl	HAL_GPIO_Init
+  76:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  77:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Pin       = WST_UART_RX_PIN;
+ 310              		.loc 1 77 29
+ 311 007c 0823     		movs	r3, #8
+ 312 007e 7B61     		str	r3, [r7, #20]
+  78:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Alternate = WST_UART_RX_AF;
+ 313              		.loc 1 78 29
+ 314 0080 0723     		movs	r3, #7
+ 315 0082 7B62     		str	r3, [r7, #36]
+  79:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  80:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   HAL_GPIO_Init(WST_UART_RX_GPIO_PORT, &GPIO_InitStruct);
+ 316              		.loc 1 80 3
+ 317 0084 07F11403 		add	r3, r7, #20
+ 318 0088 1946     		mov	r1, r3
+ 319 008a 1648     		ldr	r0, .L15+4
+ 320 008c FFF7FEFF 		bl	HAL_GPIO_Init
+  81:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  82:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Instance = WST_UART;
+ 321              		.loc 1 82 20
+ 322 0090 7B68     		ldr	r3, [r7, #4]
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 8
+
+
+ 323 0092 154A     		ldr	r2, .L15+8
+ 324 0094 1A60     		str	r2, [r3]
+  83:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  84:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.BaudRate     = WST_UART_BAUDRATE;
+ 325              		.loc 1 84 29
+ 326 0096 7B68     		ldr	r3, [r7, #4]
+ 327 0098 4FF4E132 		mov	r2, #115200
+ 328 009c 5A60     		str	r2, [r3, #4]
+  85:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.WordLength   = UART_WORDLENGTH_8B;
+ 329              		.loc 1 85 29
+ 330 009e 7B68     		ldr	r3, [r7, #4]
+ 331 00a0 0022     		movs	r2, #0
+ 332 00a2 9A60     		str	r2, [r3, #8]
+  86:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.StopBits     = UART_STOPBITS_1;
+ 333              		.loc 1 86 29
+ 334 00a4 7B68     		ldr	r3, [r7, #4]
+ 335 00a6 0022     		movs	r2, #0
+ 336 00a8 DA60     		str	r2, [r3, #12]
+  87:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.Parity       = UART_PARITY_NONE;
+ 337              		.loc 1 87 29
+ 338 00aa 7B68     		ldr	r3, [r7, #4]
+ 339 00ac 0022     		movs	r2, #0
+ 340 00ae 1A61     		str	r2, [r3, #16]
+  88:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.HwFlowCtl    = UART_HWCONTROL_NONE;
+ 341              		.loc 1 88 29
+ 342 00b0 7B68     		ldr	r3, [r7, #4]
+ 343 00b2 0022     		movs	r2, #0
+ 344 00b4 9A61     		str	r2, [r3, #24]
+  89:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.Mode         = UART_MODE_TX_RX;
+ 345              		.loc 1 89 29
+ 346 00b6 7B68     		ldr	r3, [r7, #4]
+ 347 00b8 0C22     		movs	r2, #12
+ 348 00ba 5A61     		str	r2, [r3, #20]
+  90:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.OverSampling = UART_OVERSAMPLING_16;
+ 349              		.loc 1 90 29
+ 350 00bc 7B68     		ldr	r3, [r7, #4]
+ 351 00be 0022     		movs	r2, #0
+ 352 00c0 DA61     		str	r2, [r3, #28]
+  91:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  92:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   if (HAL_UART_Init(handle) != HAL_OK) {
+ 353              		.loc 1 92 7
+ 354 00c2 7868     		ldr	r0, [r7, #4]
+ 355 00c4 FFF7FEFF 		bl	HAL_UART_Init
+ 356 00c8 0346     		mov	r3, r0
+ 357              		.loc 1 92 6
+ 358 00ca 002B     		cmp	r3, #0
+ 359 00cc 02D0     		beq	.L12
+  93:../../../../development/system/boards/stm_dev_bsp/bsp.c ****     return WST_ERR;
+ 360              		.loc 1 93 12
+ 361 00ce 4FF0FF33 		mov	r3, #-1
+ 362 00d2 00E0     		b	.L14
+ 363              	.L12:
+  94:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   }
+  95:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   return WST_OK;
+ 364              		.loc 1 95 10
+ 365 00d4 0023     		movs	r3, #0
+ 366              	.L14:
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 9
+
+
+  96:../../../../development/system/boards/stm_dev_bsp/bsp.c **** }
+ 367              		.loc 1 96 1 discriminator 1
+ 368 00d6 1846     		mov	r0, r3
+ 369 00d8 2837     		adds	r7, r7, #40
+ 370              	.LCFI13:
+ 371              		.cfi_def_cfa_offset 8
+ 372 00da BD46     		mov	sp, r7
+ 373              	.LCFI14:
+ 374              		.cfi_def_cfa_register 13
+ 375              		@ sp needed
+ 376 00dc 80BD     		pop	{r7, pc}
+ 377              	.L16:
+ 378 00de 00BF     		.align	2
+ 379              	.L15:
+ 380 00e0 00380240 		.word	1073887232
+ 381 00e4 00000240 		.word	1073872896
+ 382 00e8 00440040 		.word	1073759232
+ 383              		.cfi_endproc
+ 384              	.LFE135:
+ 386              		.section	.text.bsp_uart_put_char,"ax",%progbits
+ 387              		.align	1
+ 388              		.global	bsp_uart_put_char
+ 389              		.syntax unified
+ 390              		.thumb
+ 391              		.thumb_func
+ 392              		.fpu fpv4-sp-d16
+ 394              	bsp_uart_put_char:
+ 395              	.LFB136:
+  97:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+  98:../../../../development/system/boards/stm_dev_bsp/bsp.c **** void bsp_uart_put_char(wst_uart_handle_t *handle, uint8_t *ch)
+  99:../../../../development/system/boards/stm_dev_bsp/bsp.c **** {
+ 396              		.loc 1 99 1
+ 397              		.cfi_startproc
+ 398              		@ args = 0, pretend = 0, frame = 8
+ 399              		@ frame_needed = 1, uses_anonymous_args = 0
+ 400 0000 80B5     		push	{r7, lr}
+ 401              	.LCFI15:
+ 402              		.cfi_def_cfa_offset 8
+ 403              		.cfi_offset 7, -8
+ 404              		.cfi_offset 14, -4
+ 405 0002 82B0     		sub	sp, sp, #8
+ 406              	.LCFI16:
+ 407              		.cfi_def_cfa_offset 16
+ 408 0004 00AF     		add	r7, sp, #0
+ 409              	.LCFI17:
+ 410              		.cfi_def_cfa_register 7
+ 411 0006 7860     		str	r0, [r7, #4]
+ 412 0008 3960     		str	r1, [r7]
+ 100:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   HAL_UART_Transmit(handle, ch, 1, 0xFFFF);
+ 413              		.loc 1 100 3
+ 414 000a 4FF6FF73 		movw	r3, #65535
+ 415 000e 0122     		movs	r2, #1
+ 416 0010 3968     		ldr	r1, [r7]
+ 417 0012 7868     		ldr	r0, [r7, #4]
+ 418 0014 FFF7FEFF 		bl	HAL_UART_Transmit
+ 101:../../../../development/system/boards/stm_dev_bsp/bsp.c **** }
+ 419              		.loc 1 101 1
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 10
+
+
+ 420 0018 00BF     		nop
+ 421 001a 0837     		adds	r7, r7, #8
+ 422              	.LCFI18:
+ 423              		.cfi_def_cfa_offset 8
+ 424 001c BD46     		mov	sp, r7
+ 425              	.LCFI19:
+ 426              		.cfi_def_cfa_register 13
+ 427              		@ sp needed
+ 428 001e 80BD     		pop	{r7, pc}
+ 429              		.cfi_endproc
+ 430              	.LFE136:
+ 432              		.section	.text.bsp_uart_write,"ax",%progbits
+ 433              		.align	1
+ 434              		.global	bsp_uart_write
+ 435              		.syntax unified
+ 436              		.thumb
+ 437              		.thumb_func
+ 438              		.fpu fpv4-sp-d16
+ 440              	bsp_uart_write:
+ 441              	.LFB137:
+ 102:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 103:../../../../development/system/boards/stm_dev_bsp/bsp.c **** void bsp_uart_write(wst_uart_handle_t *handle, uint8_t *data, uint16_t length)
+ 104:../../../../development/system/boards/stm_dev_bsp/bsp.c **** {
+ 442              		.loc 1 104 1
+ 443              		.cfi_startproc
+ 444              		@ args = 0, pretend = 0, frame = 16
+ 445              		@ frame_needed = 1, uses_anonymous_args = 0
+ 446 0000 80B5     		push	{r7, lr}
+ 447              	.LCFI20:
+ 448              		.cfi_def_cfa_offset 8
+ 449              		.cfi_offset 7, -8
+ 450              		.cfi_offset 14, -4
+ 451 0002 84B0     		sub	sp, sp, #16
+ 452              	.LCFI21:
+ 453              		.cfi_def_cfa_offset 24
+ 454 0004 00AF     		add	r7, sp, #0
+ 455              	.LCFI22:
+ 456              		.cfi_def_cfa_register 7
+ 457 0006 F860     		str	r0, [r7, #12]
+ 458 0008 B960     		str	r1, [r7, #8]
+ 459 000a 1346     		mov	r3, r2
+ 460 000c FB80     		strh	r3, [r7, #6]	@ movhi
+ 105:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   HAL_UART_Transmit(handle, data, length, 0xFFFF);
+ 461              		.loc 1 105 3
+ 462 000e FA88     		ldrh	r2, [r7, #6]
+ 463 0010 4FF6FF73 		movw	r3, #65535
+ 464 0014 B968     		ldr	r1, [r7, #8]
+ 465 0016 F868     		ldr	r0, [r7, #12]
+ 466 0018 FFF7FEFF 		bl	HAL_UART_Transmit
+ 106:../../../../development/system/boards/stm_dev_bsp/bsp.c **** }
+ 467              		.loc 1 106 1
+ 468 001c 00BF     		nop
+ 469 001e 1037     		adds	r7, r7, #16
+ 470              	.LCFI23:
+ 471              		.cfi_def_cfa_offset 8
+ 472 0020 BD46     		mov	sp, r7
+ 473              	.LCFI24:
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 11
+
+
+ 474              		.cfi_def_cfa_register 13
+ 475              		@ sp needed
+ 476 0022 80BD     		pop	{r7, pc}
+ 477              		.cfi_endproc
+ 478              	.LFE137:
+ 480              		.section	.text.bsp_i2c_init,"ax",%progbits
+ 481              		.align	1
+ 482              		.global	bsp_i2c_init
+ 483              		.syntax unified
+ 484              		.thumb
+ 485              		.thumb_func
+ 486              		.fpu fpv4-sp-d16
+ 488              	bsp_i2c_init:
+ 489              	.LFB138:
+ 107:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 108:../../../../development/system/boards/stm_dev_bsp/bsp.c **** /************************************************************
+ 109:../../../../development/system/boards/stm_dev_bsp/bsp.c ****  *************************** I2C ****************************
+ 110:../../../../development/system/boards/stm_dev_bsp/bsp.c ****  ***********************************************************/
+ 111:../../../../development/system/boards/stm_dev_bsp/bsp.c **** int bsp_i2c_init(wst_i2c_handle_t *handle)
+ 112:../../../../development/system/boards/stm_dev_bsp/bsp.c **** {
+ 490              		.loc 1 112 1
+ 491              		.cfi_startproc
+ 492              		@ args = 0, pretend = 0, frame = 40
+ 493              		@ frame_needed = 1, uses_anonymous_args = 0
+ 494 0000 80B5     		push	{r7, lr}
+ 495              	.LCFI25:
+ 496              		.cfi_def_cfa_offset 8
+ 497              		.cfi_offset 7, -8
+ 498              		.cfi_offset 14, -4
+ 499 0002 8AB0     		sub	sp, sp, #40
+ 500              	.LCFI26:
+ 501              		.cfi_def_cfa_offset 48
+ 502 0004 00AF     		add	r7, sp, #0
+ 503              	.LCFI27:
+ 504              		.cfi_def_cfa_register 7
+ 505 0006 7860     		str	r0, [r7, #4]
+ 506              	.LBB8:
+ 113:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitTypeDef  GPIO_InitStruct;
+ 114:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 115:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   WST_I2C_SCL_GPIO_CLK_ENABLE();
+ 507              		.loc 1 115 3
+ 508 0008 0023     		movs	r3, #0
+ 509 000a 3B61     		str	r3, [r7, #16]
+ 510 000c 3C4B     		ldr	r3, .L23
+ 511 000e 1B6B     		ldr	r3, [r3, #48]
+ 512 0010 3B4A     		ldr	r2, .L23
+ 513 0012 43F00203 		orr	r3, r3, #2
+ 514 0016 1363     		str	r3, [r2, #48]
+ 515 0018 394B     		ldr	r3, .L23
+ 516 001a 1B6B     		ldr	r3, [r3, #48]
+ 517 001c 03F00203 		and	r3, r3, #2
+ 518 0020 3B61     		str	r3, [r7, #16]
+ 519 0022 3B69     		ldr	r3, [r7, #16]
+ 520              	.LBE8:
+ 521              	.LBB9:
+ 116:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   WST_I2C_SDA_GPIO_CLK_ENABLE();
+ 522              		.loc 1 116 3
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 12
+
+
+ 523 0024 0023     		movs	r3, #0
+ 524 0026 FB60     		str	r3, [r7, #12]
+ 525 0028 354B     		ldr	r3, .L23
+ 526 002a 1B6B     		ldr	r3, [r3, #48]
+ 527 002c 344A     		ldr	r2, .L23
+ 528 002e 43F00203 		orr	r3, r3, #2
+ 529 0032 1363     		str	r3, [r2, #48]
+ 530 0034 324B     		ldr	r3, .L23
+ 531 0036 1B6B     		ldr	r3, [r3, #48]
+ 532 0038 03F00203 		and	r3, r3, #2
+ 533 003c FB60     		str	r3, [r7, #12]
+ 534 003e FB68     		ldr	r3, [r7, #12]
+ 535              	.LBE9:
+ 536              	.LBB10:
+ 117:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   WST_I2C_CLK_ENABLE();
+ 537              		.loc 1 117 3
+ 538 0040 0023     		movs	r3, #0
+ 539 0042 BB60     		str	r3, [r7, #8]
+ 540 0044 2E4B     		ldr	r3, .L23
+ 541 0046 1B6C     		ldr	r3, [r3, #64]
+ 542 0048 2D4A     		ldr	r2, .L23
+ 543 004a 43F40013 		orr	r3, r3, #2097152
+ 544 004e 1364     		str	r3, [r2, #64]
+ 545 0050 2B4B     		ldr	r3, .L23
+ 546 0052 1B6C     		ldr	r3, [r3, #64]
+ 547 0054 03F40013 		and	r3, r3, #2097152
+ 548 0058 BB60     		str	r3, [r7, #8]
+ 549 005a BB68     		ldr	r3, [r7, #8]
+ 550              	.LBE10:
+ 118:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 119:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   WST_I2C_FORCE_RESET();
+ 551              		.loc 1 119 3
+ 552 005c 284B     		ldr	r3, .L23
+ 553 005e 1B6A     		ldr	r3, [r3, #32]
+ 554 0060 274A     		ldr	r2, .L23
+ 555 0062 43F40013 		orr	r3, r3, #2097152
+ 556 0066 1362     		str	r3, [r2, #32]
+ 120:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   WST_I2C_RELEASE_RESET();
+ 557              		.loc 1 120 3
+ 558 0068 254B     		ldr	r3, .L23
+ 559 006a 1B6A     		ldr	r3, [r3, #32]
+ 560 006c 244A     		ldr	r2, .L23
+ 561 006e 23F40013 		bic	r3, r3, #2097152
+ 562 0072 1362     		str	r3, [r2, #32]
+ 121:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 122:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Pin       = WST_I2C_SCL_PIN;
+ 563              		.loc 1 122 29
+ 564 0074 4FF48073 		mov	r3, #256
+ 565 0078 7B61     		str	r3, [r7, #20]
+ 123:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Mode      = GPIO_MODE_AF_OD;
+ 566              		.loc 1 123 29
+ 567 007a 1223     		movs	r3, #18
+ 568 007c BB61     		str	r3, [r7, #24]
+ 124:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Pull      = GPIO_PULLUP;
+ 569              		.loc 1 124 29
+ 570 007e 0123     		movs	r3, #1
+ 571 0080 FB61     		str	r3, [r7, #28]
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 13
+
+
+ 125:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Speed     = GPIO_SPEED_HIGH;
+ 572              		.loc 1 125 29
+ 573 0082 0323     		movs	r3, #3
+ 574 0084 3B62     		str	r3, [r7, #32]
+ 126:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Alternate = WST_I2C_SCL_SDA_AF;
+ 575              		.loc 1 126 29
+ 576 0086 0423     		movs	r3, #4
+ 577 0088 7B62     		str	r3, [r7, #36]
+ 127:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   HAL_GPIO_Init(WST_I2C_SCL_GPIO_PORT, &GPIO_InitStruct);
+ 578              		.loc 1 127 3
+ 579 008a 07F11403 		add	r3, r7, #20
+ 580 008e 1946     		mov	r1, r3
+ 581 0090 1C48     		ldr	r0, .L23+4
+ 582 0092 FFF7FEFF 		bl	HAL_GPIO_Init
+ 128:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 129:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Pin       = WST_I2C_SDA_PIN;
+ 583              		.loc 1 129 29
+ 584 0096 4FF40073 		mov	r3, #512
+ 585 009a 7B61     		str	r3, [r7, #20]
+ 130:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   GPIO_InitStruct.Alternate = WST_I2C_SCL_SDA_AF;
+ 586              		.loc 1 130 29
+ 587 009c 0423     		movs	r3, #4
+ 588 009e 7B62     		str	r3, [r7, #36]
+ 131:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   HAL_GPIO_Init(WST_I2C_SDA_GPIO_PORT, &GPIO_InitStruct);
+ 589              		.loc 1 131 3
+ 590 00a0 07F11403 		add	r3, r7, #20
+ 591 00a4 1946     		mov	r1, r3
+ 592 00a6 1748     		ldr	r0, .L23+4
+ 593 00a8 FFF7FEFF 		bl	HAL_GPIO_Init
+ 132:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 133:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Instance             = WST_I2C;
+ 594              		.loc 1 133 32
+ 595 00ac 7B68     		ldr	r3, [r7, #4]
+ 596 00ae 164A     		ldr	r2, .L23+8
+ 597 00b0 1A60     		str	r2, [r3]
+ 134:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.ClockSpeed      = WST_I2C_SPEEDCLOCK;
+ 598              		.loc 1 134 32
+ 599 00b2 7B68     		ldr	r3, [r7, #4]
+ 600 00b4 154A     		ldr	r2, .L23+12
+ 601 00b6 5A60     		str	r2, [r3, #4]
+ 135:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.DutyCycle       = WST_I2C_DUTYCYCLE;
+ 602              		.loc 1 135 32
+ 603 00b8 7B68     		ldr	r3, [r7, #4]
+ 604 00ba 0022     		movs	r2, #0
+ 605 00bc 9A60     		str	r2, [r3, #8]
+ 136:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.OwnAddress1     = 0xFF;
+ 606              		.loc 1 136 32
+ 607 00be 7B68     		ldr	r3, [r7, #4]
+ 608 00c0 FF22     		movs	r2, #255
+ 609 00c2 DA60     		str	r2, [r3, #12]
+ 137:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.AddressingMode  = I2C_ADDRESSINGMODE_7BIT;
+ 610              		.loc 1 137 32
+ 611 00c4 7B68     		ldr	r3, [r7, #4]
+ 612 00c6 4FF48042 		mov	r2, #16384
+ 613 00ca 1A61     		str	r2, [r3, #16]
+ 138:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+ 614              		.loc 1 138 32
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 14
+
+
+ 615 00cc 7B68     		ldr	r3, [r7, #4]
+ 616 00ce 0022     		movs	r2, #0
+ 617 00d0 5A61     		str	r2, [r3, #20]
+ 139:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.OwnAddress2     = 0xFF;
+ 618              		.loc 1 139 32
+ 619 00d2 7B68     		ldr	r3, [r7, #4]
+ 620 00d4 FF22     		movs	r2, #255
+ 621 00d6 9A61     		str	r2, [r3, #24]
+ 140:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+ 622              		.loc 1 140 32
+ 623 00d8 7B68     		ldr	r3, [r7, #4]
+ 624 00da 0022     		movs	r2, #0
+ 625 00dc DA61     		str	r2, [r3, #28]
+ 141:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   handle->Init.NoStretchMode   = I2C_NOSTRETCH_DISABLE;
+ 626              		.loc 1 141 32
+ 627 00de 7B68     		ldr	r3, [r7, #4]
+ 628 00e0 0022     		movs	r2, #0
+ 629 00e2 1A62     		str	r2, [r3, #32]
+ 142:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 143:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   if(HAL_I2C_Init(handle) != HAL_OK) {
+ 630              		.loc 1 143 6
+ 631 00e4 7868     		ldr	r0, [r7, #4]
+ 632 00e6 FFF7FEFF 		bl	HAL_I2C_Init
+ 633 00ea 0346     		mov	r3, r0
+ 634              		.loc 1 143 5
+ 635 00ec 002B     		cmp	r3, #0
+ 636 00ee 02D0     		beq	.L20
+ 144:../../../../development/system/boards/stm_dev_bsp/bsp.c ****     return WST_ERR;
+ 637              		.loc 1 144 12
+ 638 00f0 4FF0FF33 		mov	r3, #-1
+ 639 00f4 00E0     		b	.L22
+ 640              	.L20:
+ 145:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   }
+ 146:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   return WST_OK;
+ 641              		.loc 1 146 10
+ 642 00f6 0023     		movs	r3, #0
+ 643              	.L22:
+ 147:../../../../development/system/boards/stm_dev_bsp/bsp.c **** }
+ 644              		.loc 1 147 1 discriminator 1
+ 645 00f8 1846     		mov	r0, r3
+ 646 00fa 2837     		adds	r7, r7, #40
+ 647              	.LCFI28:
+ 648              		.cfi_def_cfa_offset 8
+ 649 00fc BD46     		mov	sp, r7
+ 650              	.LCFI29:
+ 651              		.cfi_def_cfa_register 13
+ 652              		@ sp needed
+ 653 00fe 80BD     		pop	{r7, pc}
+ 654              	.L24:
+ 655              		.align	2
+ 656              	.L23:
+ 657 0100 00380240 		.word	1073887232
+ 658 0104 00040240 		.word	1073873920
+ 659 0108 00540040 		.word	1073763328
+ 660 010c 801A0600 		.word	400000
+ 661              		.cfi_endproc
+ 662              	.LFE138:
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 15
+
+
+ 664              		.section	.text.bsp_i2c_write,"ax",%progbits
+ 665              		.align	1
+ 666              		.global	bsp_i2c_write
+ 667              		.syntax unified
+ 668              		.thumb
+ 669              		.thumb_func
+ 670              		.fpu fpv4-sp-d16
+ 672              	bsp_i2c_write:
+ 673              	.LFB139:
+ 148:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 149:../../../../development/system/boards/stm_dev_bsp/bsp.c **** int bsp_i2c_write(wst_i2c_handle_t *handle,
+ 150:../../../../development/system/boards/stm_dev_bsp/bsp.c ****              uint8_t slave_addr,
+ 151:../../../../development/system/boards/stm_dev_bsp/bsp.c ****              uint8_t reg_addr,
+ 152:../../../../development/system/boards/stm_dev_bsp/bsp.c ****              uint16_t length,
+ 153:../../../../development/system/boards/stm_dev_bsp/bsp.c ****              uint8_t *data)
+ 154:../../../../development/system/boards/stm_dev_bsp/bsp.c **** {
+ 674              		.loc 1 154 1
+ 675              		.cfi_startproc
+ 676              		@ args = 4, pretend = 0, frame = 8
+ 677              		@ frame_needed = 1, uses_anonymous_args = 0
+ 678 0000 80B5     		push	{r7, lr}
+ 679              	.LCFI30:
+ 680              		.cfi_def_cfa_offset 8
+ 681              		.cfi_offset 7, -8
+ 682              		.cfi_offset 14, -4
+ 683 0002 86B0     		sub	sp, sp, #24
+ 684              	.LCFI31:
+ 685              		.cfi_def_cfa_offset 32
+ 686 0004 04AF     		add	r7, sp, #16
+ 687              	.LCFI32:
+ 688              		.cfi_def_cfa 7, 16
+ 689 0006 7860     		str	r0, [r7, #4]
+ 690 0008 0846     		mov	r0, r1
+ 691 000a 1146     		mov	r1, r2
+ 692 000c 1A46     		mov	r2, r3
+ 693 000e 0346     		mov	r3, r0
+ 694 0010 FB70     		strb	r3, [r7, #3]
+ 695 0012 0B46     		mov	r3, r1
+ 696 0014 BB70     		strb	r3, [r7, #2]
+ 697 0016 1346     		mov	r3, r2	@ movhi
+ 698 0018 3B80     		strh	r3, [r7]	@ movhi
+ 155:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   while(HAL_I2C_Mem_Write(handle, ((uint16_t)slave_addr<<1), reg_addr, 1U, data, length, 25U) != HA
+ 699              		.loc 1 155 8
+ 700 001a 08E0     		b	.L26
+ 701              	.L28:
+ 156:../../../../development/system/boards/stm_dev_bsp/bsp.c ****     if (HAL_I2C_GetError(handle) != HAL_I2C_ERROR_NONE) {
+ 702              		.loc 1 156 9
+ 703 001c 7868     		ldr	r0, [r7, #4]
+ 704 001e FFF7FEFF 		bl	HAL_I2C_GetError
+ 705 0022 0346     		mov	r3, r0
+ 706              		.loc 1 156 8
+ 707 0024 002B     		cmp	r3, #0
+ 708 0026 02D0     		beq	.L26
+ 157:../../../../development/system/boards/stm_dev_bsp/bsp.c ****       return WST_ERR;
+ 709              		.loc 1 157 14
+ 710 0028 4FF0FF33 		mov	r3, #-1
+ 711 002c 13E0     		b	.L27
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 16
+
+
+ 712              	.L26:
+ 155:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   while(HAL_I2C_Mem_Write(handle, ((uint16_t)slave_addr<<1), reg_addr, 1U, data, length, 25U) != HA
+ 713              		.loc 1 155 9
+ 714 002e FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 715 0030 9BB2     		uxth	r3, r3
+ 716 0032 5B00     		lsls	r3, r3, #1
+ 717 0034 99B2     		uxth	r1, r3
+ 718 0036 BB78     		ldrb	r3, [r7, #2]	@ zero_extendqisi2
+ 719 0038 9AB2     		uxth	r2, r3
+ 720 003a 1923     		movs	r3, #25
+ 721 003c 0293     		str	r3, [sp, #8]
+ 722 003e 3B88     		ldrh	r3, [r7]
+ 723 0040 0193     		str	r3, [sp, #4]
+ 724 0042 3B69     		ldr	r3, [r7, #16]
+ 725 0044 0093     		str	r3, [sp]
+ 726 0046 0123     		movs	r3, #1
+ 727 0048 7868     		ldr	r0, [r7, #4]
+ 728 004a FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ 729 004e 0346     		mov	r3, r0
+ 155:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   while(HAL_I2C_Mem_Write(handle, ((uint16_t)slave_addr<<1), reg_addr, 1U, data, length, 25U) != HA
+ 730              		.loc 1 155 8
+ 731 0050 002B     		cmp	r3, #0
+ 732 0052 E3D1     		bne	.L28
+ 158:../../../../development/system/boards/stm_dev_bsp/bsp.c ****     }
+ 159:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   }
+ 160:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   return WST_OK;
+ 733              		.loc 1 160 10
+ 734 0054 0023     		movs	r3, #0
+ 735              	.L27:
+ 161:../../../../development/system/boards/stm_dev_bsp/bsp.c **** }
+ 736              		.loc 1 161 1
+ 737 0056 1846     		mov	r0, r3
+ 738 0058 0837     		adds	r7, r7, #8
+ 739              	.LCFI33:
+ 740              		.cfi_def_cfa_offset 8
+ 741 005a BD46     		mov	sp, r7
+ 742              	.LCFI34:
+ 743              		.cfi_def_cfa_register 13
+ 744              		@ sp needed
+ 745 005c 80BD     		pop	{r7, pc}
+ 746              		.cfi_endproc
+ 747              	.LFE139:
+ 749              		.section	.text.bsp_i2c_read,"ax",%progbits
+ 750              		.align	1
+ 751              		.global	bsp_i2c_read
+ 752              		.syntax unified
+ 753              		.thumb
+ 754              		.thumb_func
+ 755              		.fpu fpv4-sp-d16
+ 757              	bsp_i2c_read:
+ 758              	.LFB140:
+ 162:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 163:../../../../development/system/boards/stm_dev_bsp/bsp.c **** int bsp_i2c_read(wst_i2c_handle_t *handle,
+ 164:../../../../development/system/boards/stm_dev_bsp/bsp.c ****              uint8_t slave_addr,
+ 165:../../../../development/system/boards/stm_dev_bsp/bsp.c ****              uint8_t reg_addr,
+ 166:../../../../development/system/boards/stm_dev_bsp/bsp.c ****              uint16_t length,
+ 167:../../../../development/system/boards/stm_dev_bsp/bsp.c ****              uint8_t *data)
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 17
+
+
+ 168:../../../../development/system/boards/stm_dev_bsp/bsp.c **** {
+ 759              		.loc 1 168 1
+ 760              		.cfi_startproc
+ 761              		@ args = 4, pretend = 0, frame = 8
+ 762              		@ frame_needed = 1, uses_anonymous_args = 0
+ 763 0000 80B5     		push	{r7, lr}
+ 764              	.LCFI35:
+ 765              		.cfi_def_cfa_offset 8
+ 766              		.cfi_offset 7, -8
+ 767              		.cfi_offset 14, -4
+ 768 0002 86B0     		sub	sp, sp, #24
+ 769              	.LCFI36:
+ 770              		.cfi_def_cfa_offset 32
+ 771 0004 04AF     		add	r7, sp, #16
+ 772              	.LCFI37:
+ 773              		.cfi_def_cfa 7, 16
+ 774 0006 7860     		str	r0, [r7, #4]
+ 775 0008 0846     		mov	r0, r1
+ 776 000a 1146     		mov	r1, r2
+ 777 000c 1A46     		mov	r2, r3
+ 778 000e 0346     		mov	r3, r0
+ 779 0010 FB70     		strb	r3, [r7, #3]
+ 780 0012 0B46     		mov	r3, r1
+ 781 0014 BB70     		strb	r3, [r7, #2]
+ 782 0016 1346     		mov	r3, r2	@ movhi
+ 783 0018 3B80     		strh	r3, [r7]	@ movhi
+ 169:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   while(HAL_I2C_Mem_Read(handle, ((uint16_t)slave_addr<<1), reg_addr, 1U, data, length, 25U) != HAL
+ 784              		.loc 1 169 8
+ 785 001a 08E0     		b	.L30
+ 786              	.L32:
+ 170:../../../../development/system/boards/stm_dev_bsp/bsp.c ****     if (HAL_I2C_GetError(handle) != HAL_I2C_ERROR_NONE) {
+ 787              		.loc 1 170 9
+ 788 001c 7868     		ldr	r0, [r7, #4]
+ 789 001e FFF7FEFF 		bl	HAL_I2C_GetError
+ 790 0022 0346     		mov	r3, r0
+ 791              		.loc 1 170 8
+ 792 0024 002B     		cmp	r3, #0
+ 793 0026 02D0     		beq	.L30
+ 171:../../../../development/system/boards/stm_dev_bsp/bsp.c ****       return WST_ERR;
+ 794              		.loc 1 171 14
+ 795 0028 4FF0FF33 		mov	r3, #-1
+ 796 002c 13E0     		b	.L31
+ 797              	.L30:
+ 169:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   while(HAL_I2C_Mem_Read(handle, ((uint16_t)slave_addr<<1), reg_addr, 1U, data, length, 25U) != HAL
+ 798              		.loc 1 169 9
+ 799 002e FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 800 0030 9BB2     		uxth	r3, r3
+ 801 0032 5B00     		lsls	r3, r3, #1
+ 802 0034 99B2     		uxth	r1, r3
+ 803 0036 BB78     		ldrb	r3, [r7, #2]	@ zero_extendqisi2
+ 804 0038 9AB2     		uxth	r2, r3
+ 805 003a 1923     		movs	r3, #25
+ 806 003c 0293     		str	r3, [sp, #8]
+ 807 003e 3B88     		ldrh	r3, [r7]
+ 808 0040 0193     		str	r3, [sp, #4]
+ 809 0042 3B69     		ldr	r3, [r7, #16]
+ 810 0044 0093     		str	r3, [sp]
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 18
+
+
+ 811 0046 0123     		movs	r3, #1
+ 812 0048 7868     		ldr	r0, [r7, #4]
+ 813 004a FFF7FEFF 		bl	HAL_I2C_Mem_Read
+ 814 004e 0346     		mov	r3, r0
+ 169:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   while(HAL_I2C_Mem_Read(handle, ((uint16_t)slave_addr<<1), reg_addr, 1U, data, length, 25U) != HAL
+ 815              		.loc 1 169 8
+ 816 0050 002B     		cmp	r3, #0
+ 817 0052 E3D1     		bne	.L32
+ 172:../../../../development/system/boards/stm_dev_bsp/bsp.c ****     }
+ 173:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   }
+ 174:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   return WST_OK;
+ 818              		.loc 1 174 10
+ 819 0054 0023     		movs	r3, #0
+ 820              	.L31:
+ 175:../../../../development/system/boards/stm_dev_bsp/bsp.c **** }
+ 821              		.loc 1 175 1
+ 822 0056 1846     		mov	r0, r3
+ 823 0058 0837     		adds	r7, r7, #8
+ 824              	.LCFI38:
+ 825              		.cfi_def_cfa_offset 8
+ 826 005a BD46     		mov	sp, r7
+ 827              	.LCFI39:
+ 828              		.cfi_def_cfa_register 13
+ 829              		@ sp needed
+ 830 005c 80BD     		pop	{r7, pc}
+ 831              		.cfi_endproc
+ 832              	.LFE140:
+ 834              		.section	.text.error_handler,"ax",%progbits
+ 835              		.align	1
+ 836              		.global	error_handler
+ 837              		.syntax unified
+ 838              		.thumb
+ 839              		.thumb_func
+ 840              		.fpu fpv4-sp-d16
+ 842              	error_handler:
+ 843              	.LFB141:
+ 176:../../../../development/system/boards/stm_dev_bsp/bsp.c **** 
+ 177:../../../../development/system/boards/stm_dev_bsp/bsp.c **** void error_handler(void)
+ 178:../../../../development/system/boards/stm_dev_bsp/bsp.c **** {
+ 844              		.loc 1 178 1
+ 845              		.cfi_startproc
+ 846              		@ args = 0, pretend = 0, frame = 0
+ 847              		@ frame_needed = 1, uses_anonymous_args = 0
+ 848              		@ link register save eliminated.
+ 849 0000 80B4     		push	{r7}
+ 850              	.LCFI40:
+ 851              		.cfi_def_cfa_offset 4
+ 852              		.cfi_offset 7, -4
+ 853 0002 00AF     		add	r7, sp, #0
+ 854              	.LCFI41:
+ 855              		.cfi_def_cfa_register 7
+ 856              	.L34:
+ 179:../../../../development/system/boards/stm_dev_bsp/bsp.c ****   while (1);
+ 857              		.loc 1 179 9 discriminator 1
+ 858 0004 FEE7     		b	.L34
+ 859              		.cfi_endproc
+ 860              	.LFE141:
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 19
+
+
+ 862              		.text
+ 863              	.Letext0:
+ 864              		.file 2 "/usr/local/Caskroom/gcc-arm-embedded/9-2020-q2-update/gcc-arm-none-eabi-9-2020-q2-update/
+ 865              		.file 3 "/usr/local/Caskroom/gcc-arm-embedded/9-2020-q2-update/gcc-arm-none-eabi-9-2020-q2-update/
+ 866              		.file 4 "../../../../dependencies/stm/STM32F4_Cube/Drivers/CMSIS/Include/core_cm4.h"
+ 867              		.file 5 "../../../../dependencies/stm/STM32F4_Cube/Drivers/CMSIS/Device/ST/STM32F4xx/Include/syste
+ 868              		.file 6 "../../../../dependencies/stm/STM32F4_Cube/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32
+ 869              		.file 7 "../../../../dependencies/stm/STM32F4_Cube/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_
+ 870              		.file 8 "../../../../dependencies/stm/STM32F4_Cube/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_
+ 871              		.file 9 "../../../../dependencies/stm/STM32F4_Cube/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_
+ 872              		.file 10 "../../../../dependencies/stm/STM32F4_Cube/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal
+ 873              		.file 11 "../../../../dependencies/stm/STM32F4_Cube/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal
+ 874              		.file 12 "../../../../dependencies/stm/STM32F4_Cube/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal
+ 875              		.file 13 "../../../../dependencies/stm/STM32F4_Cube/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal
+ 876              		.file 14 "../../../../dependencies/stm/STM32F4_Cube/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal
+ 877              		.file 15 "/usr/local/Caskroom/gcc-arm-embedded/9-2020-q2-update/gcc-arm-none-eabi-9-2020-q2-update
+ 878              		.file 16 "/usr/local/Caskroom/gcc-arm-embedded/9-2020-q2-update/gcc-arm-none-eabi-9-2020-q2-update
+ 879              		.file 17 "/usr/local/Caskroom/gcc-arm-embedded/9-2020-q2-update/gcc-arm-none-eabi-9-2020-q2-update
+ 880              		.file 18 "/usr/local/Caskroom/gcc-arm-embedded/9-2020-q2-update/gcc-arm-none-eabi-9-2020-q2-update
+ 881              		.file 19 "../../../../development/system/boards/stm_dev_bsp/bsp.h"
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 bsp.c
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:18     .text.SystemClock_Config:0000000000000000 $t
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:25     .text.SystemClock_Config:0000000000000000 SystemClock_Config
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:163    .text.SystemClock_Config:00000000000000cc $d
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:169    .text.bsp_board_bringup:0000000000000000 $t
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:176    .text.bsp_board_bringup:0000000000000000 bsp_board_bringup
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:842    .text.error_handler:0000000000000000 error_handler
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:220    .text.bsp_uart_init:0000000000000000 $t
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:227    .text.bsp_uart_init:0000000000000000 bsp_uart_init
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:380    .text.bsp_uart_init:00000000000000e0 $d
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:387    .text.bsp_uart_put_char:0000000000000000 $t
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:394    .text.bsp_uart_put_char:0000000000000000 bsp_uart_put_char
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:433    .text.bsp_uart_write:0000000000000000 $t
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:440    .text.bsp_uart_write:0000000000000000 bsp_uart_write
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:481    .text.bsp_i2c_init:0000000000000000 $t
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:488    .text.bsp_i2c_init:0000000000000000 bsp_i2c_init
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:657    .text.bsp_i2c_init:0000000000000100 $d
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:665    .text.bsp_i2c_write:0000000000000000 $t
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:672    .text.bsp_i2c_write:0000000000000000 bsp_i2c_write
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:750    .text.bsp_i2c_read:0000000000000000 $t
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:757    .text.bsp_i2c_read:0000000000000000 bsp_i2c_read
+/var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s:835    .text.error_handler:0000000000000000 $t
+                           .group:0000000000000000 wm4.0.ec2406cbd31d56f71e0243dbf4ad4862
+                           .group:0000000000000000 wm4._newlib_version.h.4.1ef4e12f167f8b69d7c30054be56050d
+                           .group:0000000000000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:0000000000000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:0000000000000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:0000000000000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:0000000000000000 wm4.stm32f4xx_hal_conf.h.2.af8b2ca6b03807d43d9ddf9698d1361c
+                           .group:0000000000000000 wm4.stm32f4xx.h.39.1b09cc4be5834e402f47d342f5416be4
+                           .group:0000000000000000 wm4.stm32f412zx.h.35.d9913ab15c3cc42510cd85c75dd3c4eb
+                           .group:0000000000000000 wm4.cmsis_version.h.32.4d5822004c01a829a975260e854b5f8e
+                           .group:0000000000000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:0000000000000000 wm4.cmsis_gcc.h.26.f42444deefab66ffa141b9b9fddb57a3
+                           .group:0000000000000000 wm4.core_cm4.h.174.059a5e001a9e729091d1407208e93224
+                           .group:0000000000000000 wm4.mpu_armv7.h.32.27b4593cb2f8d3152ca5d97a9d72b321
+                           .group:0000000000000000 wm4.stm32f412zx.h.838.7f7dacbfe2e2c88ca5202f260290d6c1
+                           .group:0000000000000000 wm4.stm32f4xx.h.196.23c4e4a5d465a121178374b8f4182f7c
+                           .group:0000000000000000 wm4.stm32_hal_legacy.h.23.394d12941f5a0482dbe3c36ee9e57b2b
+                           .group:0000000000000000 wm4.stddef.h.39.144cf5ddcd53cbfdac30259dc1a6c87f
+                           .group:0000000000000000 wm4.stm32f4xx_hal_def.h.58.2d2c85d5b9693a63e90566b806e8a752
+                           .group:0000000000000000 wm4.stm32f4xx_hal_rcc_ex.h.22.fe15f7aa872c0ff0051d1df0fdd88661
+                           .group:0000000000000000 wm4.stm32f4xx_hal_rcc.h.108.0c18a3cfc2dd91bdf92470b4bd0ea1b5
+                           .group:0000000000000000 wm4.stm32f4xx_hal_exti.h.22.b6735b42221f61fdbfd800fa51550a85
+                           .group:0000000000000000 wm4.stm32f4xx_hal_gpio.h.22.be2c6bcf9722096ea8f49a41bf6aa50c
+                           .group:0000000000000000 wm4.stm32f4xx_hal_gpio_ex.h.22.5fac61f4372beb17c6941adb263493e1
+                           .group:0000000000000000 wm4.stm32f4xx_hal_gpio.h.264.978ac12eab1d3b3400b35b8c427e2c33
+                           .group:0000000000000000 wm4.stm32f4xx_hal_dma.h.22.fffce20ac9119c50557659c75e75ab1c
+                           .group:0000000000000000 wm4.stm32f4xx_hal_dma.h.721.a1e57ffbc615f926e6509c5acc65e492
+                           .group:0000000000000000 wm4.stm32f4xx_hal_cortex.h.22.e6aa3b847b5388be63c32d1f9e696ef7
+                           .group:0000000000000000 wm4.stm32f4xx_hal_flash.h.22.31b301be2655c3eb8583e51c8231544a
+                           .group:0000000000000000 wm4.stm32f4xx_hal_flash_ex.h.22.5016bda819f6a480c96be63516c36ab2
+                           .group:0000000000000000 wm4.stm32f4xx_hal_flash.h.363.51efdf0f6c88f683efb89d7cc95cc1be
+                           .group:0000000000000000 wm4.stm32f4xx_ll_fsmc.h.22.ed2b494a9a7d206deda6c53e626a4601
+                           .group:0000000000000000 wm4.stm32f4xx_hal_i2c.h.22.7a518225417837eb3d0550cc95fa0a57
+ARM GAS  /var/folders/kj/yzqgq53j3dg15vgwwwwgf5s00000gn/T//ccN1jpQt.s 			page 21
+
+
+                           .group:0000000000000000 wm4.stm32f4xx_hal_i2c_ex.h.22.a90c9435159b7eaef7dc679da6295e14
+                           .group:0000000000000000 wm4.stm32f4xx_hal_i2c.h.644.9d0aaa0659558fa97b5b5ac32630da6a
+                           .group:0000000000000000 wm4.stm32f4xx_hal_pwr.h.22.2c27d93ae187efe3a73816f03a329970
+                           .group:0000000000000000 wm4.stm32f4xx_hal_pwr_ex.h.22.a735ba4f49c5b2574a98d58f3b7ae925
+                           .group:0000000000000000 wm4.stm32f4xx_hal_pwr.h.337.60b43975c84527a23cb6994b23165a5e
+                           .group:0000000000000000 wm4.stm32f4xx_hal_spi.h.22.bc4a13b7a7ee3429db720a8d37eb1e5e
+                           .group:0000000000000000 wm4.stm32f4xx_hal_tim.h.22.9c16860ec2cc7f3d941608a8f521bc4a
+                           .group:0000000000000000 wm4.stm32f4xx_hal_tim_ex.h.22.2fde471485fd197eebc7c86251149c11
+                           .group:0000000000000000 wm4.stm32f4xx_hal_uart.h.22.1edfd0da9670bd23245390d2a3da576d
+                           .group:0000000000000000 wm4.stm32f4xx_hal.h.72.a5a58188aa461a0614f1e58e159c7840
+                           .group:0000000000000000 wm4.stm32f4xx_nucleo_144.h.54.f0d042017bc81221aa085a20cf55c671
+                           .group:0000000000000000 wm4.newlib.h.8.7cb3972cd43265932d4782d5eb589854
+                           .group:0000000000000000 wm4.ieeefp.h.77.f33a4dce62116f6f5175ff8bae57a54c
+                           .group:0000000000000000 wm4.config.h.224.c701144a7b0518c6ee9b9b5465b79f81
+                           .group:0000000000000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:0000000000000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:0000000000000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:0000000000000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:0000000000000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:0000000000000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:0000000000000000 wm4.reent.h.77.dcd6129ff07fe81bd5636db29abe53b2
+                           .group:0000000000000000 wm4.cdefs.h.49.75c8cf0da02add7669d4e6b77e254feb
+                           .group:0000000000000000 wm4.string.h.15.dab3980bf35408a4c507182805e2de3a
+                           .group:0000000000000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:0000000000000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:0000000000000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:0000000000000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:0000000000000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:0000000000000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:0000000000000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:0000000000000000 wm4.select.h.19.97ca6fd0c752a0f3b6719fd314d361e6
+                           .group:0000000000000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:0000000000000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:0000000000000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:0000000000000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:0000000000000000 wm4.stdio.h.81.932d0c162786b883f622b8d05c120c78
+                           .group:0000000000000000 wm4.wst_common.h.9.8860a77277a68c3cc83109e96e83c7fb
+                           .group:0000000000000000 wm4.bsp.h.21.9e5c882e28336308e70ed2ea2ef4c431
+
+UNDEFINED SYMBOLS
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_Init
+HAL_GPIO_Init
+HAL_UART_Init
+HAL_UART_Transmit
+HAL_I2C_Init
+HAL_I2C_GetError
+HAL_I2C_Mem_Write
+HAL_I2C_Mem_Read
