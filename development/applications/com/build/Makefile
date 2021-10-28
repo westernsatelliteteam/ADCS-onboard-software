@@ -2,7 +2,6 @@ TARGET = COM
 DEBUG = 1
 BUILD_DIR = _build
 BUILD_CONFIG ?= DEBUG
-#BOARD_VERSION ?= DISCO
 BOARD_VERSION ?= NUCLEO
 
 
@@ -12,15 +11,12 @@ LIB_ROOT = $(DEV_ROOT)/libraries
 DRV_ROOT = $(DEV_ROOT)/drivers
 PROJ_DIR = ..
 WST_BSP_DIR = $(DEV_ROOT)/system/boards/stm_dev_bsp
-SDK_ROOT = $(WST_ROOT)/dependencies/stm/STM32F4_Cube
+SDK_ROOT = $(WST_ROOT)/dependencies/stm/STM32L4_Cube
 FREERTOS_ROOT = $(WST_ROOT)/dependencies/freertos/FreeRTOSv10.4.1/FreeRTOS/Source
 FREERTOS_PORTABLE = $(FREERTOS_ROOT)/portable/GCC/ARM_CM4F
-HAL_DIR = $(SDK_ROOT)/Drivers/STM32F4xx_HAL_Driver
-ifeq ($(BOARD_VERSION), DISCO)
-BSP_DIR = $(SDK_ROOT)/Drivers/BSP/STM32412G-DISCOVERY
-endif
+HAL_DIR = $(SDK_ROOT)/Drivers/STM32L4xx_HAL_Driver
 ifeq ($(BOARD_VERSION), NUCLEO)
-BSP_DIR = $(SDK_ROOT)/Drivers/BSP/STM32F4xx_Nucleo_144
+BSP_DIR = $(SDK_ROOT)/Drivers/BSP/STM32L4xx_Nucleo_144
 endif
 CMSIS_DIR = $(SDK_ROOT)/Drivers/CMSIS
 
@@ -29,12 +25,12 @@ CMSIS_DIR = $(SDK_ROOT)/Drivers/CMSIS
 ######################################
 # C sources
 C_SOURCES = \
-$(HAL_DIR)/Src/stm32f4xx_hal.c \
-$(HAL_DIR)/Src/stm32f4xx_hal_cortex.c \
-$(HAL_DIR)/Src/stm32f4xx_hal_gpio.c \
-$(HAL_DIR)/Src/stm32f4xx_hal_rcc.c \
-$(HAL_DIR)/Src/stm32f4xx_hal_uart.c \
-$(HAL_DIR)/Src/stm32f4xx_hal_i2c.c \
+$(HAL_DIR)/Src/stm32l4xx_hal.c \
+$(HAL_DIR)/Src/stm32l4xx_hal_cortex.c \
+$(HAL_DIR)/Src/stm32l4xx_hal_gpio.c \
+$(HAL_DIR)/Src/stm32l4xx_hal_rcc.c \
+$(HAL_DIR)/Src/stm32l4xx_hal_uart.c \
+$(HAL_DIR)/Src/stm32l4xx_hal_i2c.c \
 $(WST_BSP_DIR)/bsp.c \
 $(FREERTOS_ROOT)/tasks.c \
 $(FREERTOS_ROOT)/queue.c \
@@ -47,36 +43,21 @@ $(FREERTOS_PORTABLE)/port.c \
 $(PROJ_DIR)/src/main.c \
 $(PROJ_DIR)/src/logger.c \
 $(PROJ_DIR)/src/i2c.c \
-$(PROJ_DIR)/src/stm32f4xx_it.c \
-$(PROJ_DIR)/src/system_stm32f4xx.c \
+$(PROJ_DIR)/src/stm32l4xx_it.c \
+$(PROJ_DIR)/src/system_stm32l4xx.c \
 
-ifeq ($(BOARD_VERSION), DISCO)
-C_SOURCES += $(BSP_DIR)/stm32412g_discovery.c
+ifeq ($(BOARD_VERSION), NUCLEO)
+C_SOURCES += $(BSP_DIR)/stm32l4xx_nucleo_144.c
 endif
 
 ifeq ($(BOARD_VERSION), NUCLEO)
-C_SOURCES += $(BSP_DIR)/stm32f4xx_nucleo_144.c
-endif
-
-
-
-# ASM sources
-ifeq ($(BOARD_VERSION), DISCO)
-STARTUP_FILE = startup_stm32f412zx.s
-endif
-
-ifeq ($(BOARD_VERSION), NUCLEO)
-STARTUP_FILE = startup_stm32f412zx.s
+STARTUP_FILE = startup_stm32l496xx.s
 endif
 
 ASM_SOURCES += $(STARTUP_FILE)
 
 # AS includes
 AS_INCLUDES =
-
-ifeq ($(BOARD_VERSION), DISCO)
-C_INCLUDES += -I$(BSP_DIR)/
-endif
 
 ifeq ($(BOARD_VERSION), NUCLEO)
 C_INCLUDES += -I$(BSP_DIR)/
@@ -88,7 +69,7 @@ C_INCLUDES += \
 			-I$(WST_BSP_DIR)/ \
 			-I$(PROJ_DIR)/include \
 			-I$(PROJ_DIR)/../shared/ \
-			-I$(CMSIS_DIR)/Device/ST/STM32F4xx/Include \
+			-I$(CMSIS_DIR)/Device/ST/STM32L4xx/Include \
 			-I$(CMSIS_DIR)/Include \
  			-I$(FREERTOS_ROOT)/include \
  			-I$(FREERTOS_PORTABLE) \
@@ -97,15 +78,9 @@ C_INCLUDES += \
 # AS defines
 AS_DEFS =
 
-ifeq ($(BOARD_VERSION), DISCO)
-CHIPSET_DEF = STM32F412Zx
-C_DEFS += -DUSE_STM32412G_DISCOVERY
-C_DEFS += -DBOARD_DISCO
-endif
-
 ifeq ($(BOARD_VERSION), NUCLEO)
-CHIPSET_DEF = STM32F412Zx
-C_DEFS += -DUSE_STM32F4XX_NUCLEO_144
+CHIPSET_DEF = STM32L496xx
+C_DEFS += -DUSE_STM32L4XX_NUCLEO_144
 C_DEFS += -DBOARD_NUCLEO
 endif
 
@@ -171,7 +146,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-LDSCRIPT = $(PROJ_DIR)/build/stm32_flash.ld
+LDSCRIPT = $(PROJ_DIR)/build/STM32L496ZGTx_FLASH.ld
 
 # libraries
 LIBS = -lc -lm -lnosys

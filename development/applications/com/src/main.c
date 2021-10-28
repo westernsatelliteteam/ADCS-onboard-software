@@ -1,6 +1,6 @@
 #include "bsp.h"
 #include "com.h"
-#include "stm32f4xx_it.h"
+#include "stm32l4xx_it.h"
 
 #include "logger.h"
 #include "i2c.h"
