@@ -79,6 +79,9 @@ void bsp_board_bringup(void)
   HAL_Init();
 
   WST_ERR_CHECK(SystemClock_Config());
+
+  __HAL_RCC_SYSCFG_CLK_ENABLE();
+  __HAL_RCC_PWR_CLK_ENABLE();
 }
 
 /************************************************************
@@ -86,7 +89,14 @@ void bsp_board_bringup(void)
  ***********************************************************/
 int bsp_uart_init(wst_uart_handle_t *handle)
 {
-  GPIO_InitTypeDef GPIO_InitStruct;  
+  GPIO_InitTypeDef GPIO_InitStruct;
+
+  WST_UART_CLK_ENABLE();
+
+  WST_UART_TX_GPIO_CLK_ENABLE();
+  WST_UART_RX_GPIO_CLK_ENABLE();
+
+  WST_UART_VDD_ENABLE();
 
   GPIO_InitStruct.Pin       = WST_UART_TX_PIN;
   GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
@@ -100,13 +110,6 @@ int bsp_uart_init(wst_uart_handle_t *handle)
   GPIO_InitStruct.Alternate = WST_UART_RX_AF;
 
   HAL_GPIO_Init(WST_UART_RX_GPIO_PORT, &GPIO_InitStruct);
-
-  WST_UART_CLK_ENABLE();
-
-  WST_UART_TX_GPIO_CLK_ENABLE();
-  WST_UART_RX_GPIO_CLK_ENABLE();
-
-  WST_UART_VDD_ENABLE();
 
   handle->Instance = WST_UART;
 
