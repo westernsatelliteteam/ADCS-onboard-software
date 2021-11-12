@@ -1,6 +1,5 @@
 _build/bsp.o: ../../../../development/system/boards/stm_dev_bsp/bsp.c \
  ../../../../development/system/boards/stm_dev_bsp/bsp.h \
- ../../../../dependencies/stm/STM32L4_Cube/Drivers/BSP/STM32L4xx_Nucleo_144/stm32l4xx_nucleo_144.h \
  ../../../../dependencies/stm/STM32L4_Cube/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
  ../include/stm32l4xx_hal_conf.h \
  ../../../../dependencies/stm/STM32L4_Cube/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h \
@@ -34,8 +33,6 @@ _build/bsp.o: ../../../../development/system/boards/stm_dev_bsp/bsp.c \
  ../../shared/wst_common.h
 
 ../../../../development/system/boards/stm_dev_bsp/bsp.h:
-
-../../../../dependencies/stm/STM32L4_Cube/Drivers/BSP/STM32L4xx_Nucleo_144/stm32l4xx_nucleo_144.h:
 
 ../../../../dependencies/stm/STM32L4_Cube/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 

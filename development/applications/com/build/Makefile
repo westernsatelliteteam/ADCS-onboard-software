@@ -29,8 +29,11 @@ $(HAL_DIR)/Src/stm32l4xx_hal.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_cortex.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_gpio.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_rcc.c \
+$(HAL_DIR)/Src/stm32l4xx_hal_rcc_ex.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_uart.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_i2c.c \
+$(HAL_DIR)/Src/stm32l4xx_hal_pwr.c \
+$(HAL_DIR)/Src/stm32l4xx_hal_pwr_ex.c \
 $(WST_BSP_DIR)/bsp.c \
 $(FREERTOS_ROOT)/tasks.c \
 $(FREERTOS_ROOT)/queue.c \
@@ -169,14 +172,17 @@ OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
 vpath %.s $(sort $(dir $(ASM_SOURCES)))
 
 $(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
-	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+	@echo compiling $<
+	@$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
 $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
-	$(AS) -c $(CFLAGS) $< -o $@
+	@echo assembling $<
+	@$(AS) -c $(CFLAGS) $< -o $@
 
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
-	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
-	$(SZ) $@
+	@echo linking $<
+	@$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+	@$(SZ) $@
 
 $(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(HEX) $< $@

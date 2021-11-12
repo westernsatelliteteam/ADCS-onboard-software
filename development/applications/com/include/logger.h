@@ -1,7 +1,7 @@
-#ifndef LOGGER_H
-#define LOGGER_H
+// #ifndef LOGGER_H
+// #define LOGGER_H
 
-void logger_init(void);
-void logger_write(char *string);
+// void logger_init(void);
+// void logger_write(char *string);
 
-#endif  // LOGGER_H
+// #endif  // LOGGER_H
