@@ -59,7 +59,7 @@ UART_HandleTypeDef hlpuart1;
 #define LD2_GPIO_Port GPIOB
 
 
-void HAL_UART_MspInit(UART_HandleTypeDef* huart)
+void temp(UART_HandleTypeDef* huart)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(huart->Instance==LPUART1)
@@ -270,7 +270,6 @@ int main(void)
   __HAL_RCC_SYSCFG_CLK_ENABLE();
   __HAL_RCC_PWR_CLK_ENABLE();
 
-
   // bsp_uart_init(&hlpuart1);
   BSP_LED_Init(LED_BLUE);
   BSP_LED_Init(LED_GREEN);
@@ -278,6 +277,8 @@ int main(void)
   MX_LPUART1_UART_Init();
   // logger_init();
   // i2c_init();
+
+  temp(&hlpuart1);
 
   // DEBUG_LOG("COM Started \r\n");
 
