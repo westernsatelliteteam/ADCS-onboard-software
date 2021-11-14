@@ -1,11 +1,10 @@
-# STM32F412 Bringup Sample Application
+# STM32L496 Bringup Sample Application
 
 ## Building Instructions
 
 - Navigate to development/applications/com/build/
 - run `make`
 - run `make flash` to flash discovery board with st-utils
-- run `make pyflash` to flash board with JLink over SWD
 
 ## Project Structure
 
