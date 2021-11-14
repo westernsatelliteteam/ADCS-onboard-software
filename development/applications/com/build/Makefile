@@ -196,7 +196,6 @@ $(BUILD_DIR):
 #######################################
 # clean up
 #######################################
-FLASH_SCRIPT = $(realpath $(DEV_ROOT))/scripts/flash.py
 TARGET_PATH  = $(realpath $(BUILD_DIR)/$(TARGET).bin)
 
 clean:
@@ -205,9 +204,6 @@ clean:
 flash:
 	st-flash write $(BUILD_DIR)/$(TARGET).bin 0x8000000
 	st-flash reset
-
-pyflash:
-	@python3 $(FLASH_SCRIPT) $(TARGET_PATH) 0x8000000
 
 #######################################
 # dependencies
