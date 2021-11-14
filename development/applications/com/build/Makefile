@@ -10,8 +10,8 @@ DEV_ROOT = $(WST_ROOT)/development
 LIB_ROOT = $(DEV_ROOT)/libraries
 DRV_ROOT = $(DEV_ROOT)/drivers
 PROJ_DIR = ..
-SDK_ROOT = $(WST_ROOT)/dependencies/stm/STM32L4_Cube
-FREERTOS_ROOT = $(WST_ROOT)/dependencies/freertos/FreeRTOSv10.4.1/FreeRTOS/Source
+SDK_ROOT = $(WST_ROOT)/dependencies/STM32CubeL4
+FREERTOS_ROOT = $(WST_ROOT)/dependencies/STM32CubeL4/Middlewares/Third_Party/FreeRTOS/Source
 FREERTOS_PORTABLE = $(FREERTOS_ROOT)/portable/GCC/ARM_CM4F
 HAL_DIR = $(SDK_ROOT)/Drivers/STM32L4xx_HAL_Driver
 ifeq ($(BOARD_VERSION), NUCLEO)
