@@ -1,17 +1,18 @@
 #ifndef I2C_H
 #define I2C_H
 
-#include "com.h"
-#include "bsp.h"
+#include <stdint.h>
 
-void i2c_init(void);
-void i2c_write(uint8_t slave_addr,
-               uint8_t reg_addr,
-               uint16_t length,
-               uint8_t *tx_buf);
-void i2c_read(uint8_t slave_addr,
-               uint8_t reg_addr,
-               uint16_t length,
-               uint8_t *rx_buf);
+int i2c_init(void);
+
+int i2c_imu_write(uint8_t slave_addr, 
+                  uint8_t reg_addr,
+                  const uint8_t *data, 
+                  uint16_t length);
+
+int i2c_imu_read(uint8_t slave_addr, 
+                 uint8_t reg_addr,
+                 uint8_t *data, 
+                 uint16_t length);
 
 #endif // I2C_H

@@ -207,7 +207,7 @@ int bsp_i2c_read(wst_i2c_handle_t *handle,
   return WST_OK;
 }
 
-void error_handler(void)
-{
-  while (1);
-}
+// void error_handler(void)
+// {
+//   while (1);
+// }

@@ -46,6 +46,7 @@ $(FREERTOS_PORTABLE)/port.c \
 $(PROJ_DIR)/src/main.c \
 $(PROJ_DIR)/src/logger.c \
 $(PROJ_DIR)/src/i2c.c \
+$(PROJ_DIR)/src/uart.c \
 $(PROJ_DIR)/src/stm32l4xx_it.c \
 $(PROJ_DIR)/src/system_stm32l4xx.c \
 
