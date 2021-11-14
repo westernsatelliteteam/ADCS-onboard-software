@@ -2,6 +2,19 @@
 #define BOARD_H
 
 #include "stm32l4xx_hal.h"
+#include "stm32l4xx_ll_bus.h"
+#include "stm32l4xx_ll_pwr.h"
+#include "stm32l4xx_ll_rcc.h"
+#include "stm32l4xx_ll_system.h"
+#include "stm32l4xx_ll_tim.h"
+#include "stm32l4xx_ll_utils.h"
+
+#define SYSCLK_FREQ                           80000000
+
+/* System Time */
+
+#define SYSTEM_TIME_TIMER         TIM2
+#define SYSTEM_TIME_CLK_EN()      LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2)
 
 /* UART */
 

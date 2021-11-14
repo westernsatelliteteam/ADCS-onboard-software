@@ -33,6 +33,9 @@ $(HAL_DIR)/Src/stm32l4xx_hal_uart.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_i2c.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_pwr.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_pwr_ex.c \
+$(HAL_ROOT)/Src/stm32l4xx_ll_tim.c \
+$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
+$(HAL_ROOT)/Src/stm32l4xx_ll_utils.c \
 $(FREERTOS_ROOT)/tasks.c \
 $(FREERTOS_ROOT)/queue.c \
 $(FREERTOS_ROOT)/list.c \
@@ -45,6 +48,7 @@ $(PROJ_DIR)/src/main.c \
 $(PROJ_DIR)/src/logger.c \
 $(PROJ_DIR)/src/i2c.c \
 $(PROJ_DIR)/src/uart.c \
+$(PROJ_DIR)/src/system_time.c \
 $(PROJ_DIR)/src/stm32l4xx_it.c \
 $(PROJ_DIR)/src/system_stm32l4xx.c \
 
@@ -68,7 +72,6 @@ endif
 # C includes
 C_INCLUDES += \
 			-I$(HAL_DIR)/Inc \
-			-I$(WST_BSP_DIR)/ \
 			-I$(PROJ_DIR)/include \
 			-I$(CMSIS_DIR)/Device/ST/STM32L4xx/Include \
 			-I$(CMSIS_DIR)/Include \
@@ -88,6 +91,7 @@ endif
 # C defines
 C_DEFS +=  \
 -DUSE_HAL_DRIVER \
+-DUSE_FULL_LL_DRIVER \
 -DLOG_LEVEL=LOG_LEVEL_DEBUG \
 -D$(CHIPSET_DEF) \
 -D$(BUILD_CONFIG) \
