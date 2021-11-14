@@ -50,7 +50,6 @@ void main_task(void *arg)
   uint32_t time = 0;
   char msg[] = "Hello World!\r\n";
   while(1) {
-    // i2c_imu_write(TEST_SLAVE_ADDR, TEST_SLAVE_REG_ADDR, 9, (uint8_t*)msg);
     LOG_DEBUG(msg);
 
     LOG_DEBUG("%u\r\n", system_time_cmp_ms(time, system_time_get()));
