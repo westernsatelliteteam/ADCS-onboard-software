@@ -10,7 +10,6 @@ DEV_ROOT = $(WST_ROOT)/development
 LIB_ROOT = $(DEV_ROOT)/libraries
 DRV_ROOT = $(DEV_ROOT)/drivers
 PROJ_DIR = ..
-WST_BSP_DIR = $(DEV_ROOT)/system/boards/stm_dev_bsp
 SDK_ROOT = $(WST_ROOT)/dependencies/stm/STM32L4_Cube
 FREERTOS_ROOT = $(WST_ROOT)/dependencies/freertos/FreeRTOSv10.4.1/FreeRTOS/Source
 FREERTOS_PORTABLE = $(FREERTOS_ROOT)/portable/GCC/ARM_CM4F
@@ -34,7 +33,6 @@ $(HAL_DIR)/Src/stm32l4xx_hal_uart.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_i2c.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_pwr.c \
 $(HAL_DIR)/Src/stm32l4xx_hal_pwr_ex.c \
-$(WST_BSP_DIR)/bsp.c \
 $(FREERTOS_ROOT)/tasks.c \
 $(FREERTOS_ROOT)/queue.c \
 $(FREERTOS_ROOT)/list.c \
@@ -91,6 +89,7 @@ endif
 # C defines
 C_DEFS +=  \
 -DUSE_HAL_DRIVER \
+-DLOG_LEVEL=LOG_LEVEL_DEBUG \
 -D$(CHIPSET_DEF) \
 -D$(BUILD_CONFIG) \
 

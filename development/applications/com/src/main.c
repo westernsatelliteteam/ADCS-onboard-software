@@ -17,8 +17,8 @@ void main_task(void *arg)
 {
   char msg[] = "Hello World!\r\n";
   while(1) {
-    // i2c_write(TEST_SLAVE_ADDR, TEST_SLAVE_REG_ADDR, 9, (uint8_t*)tx_data);
-    DEBUG_LOG(msg);
+    // i2c_imu_write(TEST_SLAVE_ADDR, TEST_SLAVE_REG_ADDR, 9, (uint8_t*)msg);
+    LOG_DEBUG(msg);
 
     BSP_LED_Toggle(LED_BLUE);
 
@@ -99,6 +99,9 @@ static void board_bringup(void)
   HAL_Init();
   sysclk_init();
 
+  __HAL_RCC_SYSCFG_CLK_ENABLE();
+  __HAL_RCC_PWR_CLK_ENABLE();
+
   uart_init();
   i2c_init();
 }
@@ -113,7 +116,7 @@ int main(void)
   // logger_init();
   // i2c_init();
 
-  DEBUG_LOG("COM Started \r\n");
+  LOG_DEBUG("COM Started \r\n");
 
   taskStatus = xTaskCreate(main_task,
                           "main_task",

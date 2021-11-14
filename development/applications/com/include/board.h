@@ -4,7 +4,6 @@
 #include "stm32l4xx_hal.h"
 
 /* UART */
-typedef UART_HandleTypeDef wst_uart_handle_t;
 
 #define WST_UART                         LPUART1
 #define WST_UART_CLK_ENABLE()            __HAL_RCC_LPUART1_CLK_ENABLE()
@@ -25,7 +24,6 @@ typedef UART_HandleTypeDef wst_uart_handle_t;
 #define WST_UART_BAUDRATE                115200
 
 /*I2C*/
-typedef I2C_HandleTypeDef wst_i2c_handle_t;
 
 #define WST_I2C                            I2C2
 #define WST_I2C_CLK_ENABLE()               __HAL_RCC_I2C2_CLK_ENABLE()
