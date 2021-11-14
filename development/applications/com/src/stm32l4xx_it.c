@@ -2,13 +2,6 @@
 #include "stm32l4xx_hal.h"
 #include "com.h"
 
-static int isOSStarted = 0;
-
-void OSStarted(void)
-{
-  isOSStarted = 1;
-}
-
 /**
   * @brief  This function handles NMI exception.
   * @param  None
@@ -82,7 +75,5 @@ void DebugMon_Handler(void)
 void SysTick_Handler(void)
 {
   HAL_IncTick();
-  if (isOSStarted) {
-    xPortSysTickHandler();
-  }
+  com_sysTickHandler();
 }

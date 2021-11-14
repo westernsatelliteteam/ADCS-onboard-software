@@ -19,6 +19,10 @@
     }                       \
   } while (0)
 
-void OSSysTick_Handler(void);
+void delay_ms(uint32_t ms);
+void delay_us(uint32_t us);
+void rtos_delay_ms(uint32_t ms);
+
+extern void com_sysTickHandler(void);
 
 #endif  // HEDWIG_H

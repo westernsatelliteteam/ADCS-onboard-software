@@ -15,6 +15,36 @@
 #define TEST_SLAVE_ADDR      0x12
 #define TEST_SLAVE_REG_ADDR  0x13
 
+static uint8_t os_started = 0;
+
+static void os_start(void)
+{
+  os_started = 1;
+  vTaskStartScheduler();
+}
+
+void delay_us(uint32_t us)
+{
+  uint32_t start_time = system_time_get();
+  while(system_time_cmp_us(start_time, system_time_get()) < us);
+}
+
+void delay_ms(uint32_t ms)
+{
+  uint32_t start_time = system_time_get();
+  while(system_time_cmp_ms(start_time, system_time_get()) < ms);
+}
+
+void rtos_delay_ms(uint32_t ms)
+{
+  if (os_started) {
+    vTaskDelay(ms);
+  }
+  else {
+    delay_ms(ms);
+  }
+}
+
 void main_task(void *arg)
 {
   uint32_t time = 0;
@@ -29,8 +59,7 @@ void main_task(void *arg)
 
     time = system_time_get();
 
-    vTaskDelay(500);
-
+    rtos_delay_ms(500);
   }
 }
 
@@ -118,12 +147,17 @@ int main(void)
 
   RTOS_ERR_CHECK(taskStatus);
 
-  OSStarted();
-
-  vTaskStartScheduler();
+  os_start();
 
   /* Should never reach here */
   while (1);
+}
+
+void com_sysTickHandler(void)
+{
+  if (os_started) {
+    xPortSysTickHandler();
+  }
 }
 
 void error_handler(void)
