@@ -10,6 +10,8 @@
 
 ## Building Instructions
 
+
+- From Top-Level Folder:
 - run `make nucleo`
 - run `make flash_nucleo` to flash nucleo board with st-utils
 
