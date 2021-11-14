@@ -4,6 +4,7 @@
 
 - run `git clone --recurse-submodules https://github.com/westernsatelliteteam/STM32L4BaseProject.git`
 - install [docker desktop](https://www.docker.com/products/docker-desktop)
+- install [st-link](https://github.com/stlink-org/stlink)
 
 ## Building Instructions
 
