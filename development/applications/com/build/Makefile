@@ -71,7 +71,7 @@ C_INCLUDES += \
 			-I$(HAL_DIR)/Inc \
 			-I$(WST_BSP_DIR)/ \
 			-I$(PROJ_DIR)/include \
-			-I$(PROJ_DIR)/../shared/ \
+			-I$(PROJ_DIR)/../common/ \
 			-I$(CMSIS_DIR)/Device/ST/STM32L4xx/Include \
 			-I$(CMSIS_DIR)/Include \
  			-I$(FREERTOS_ROOT)/include \
