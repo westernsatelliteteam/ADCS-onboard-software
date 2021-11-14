@@ -113,8 +113,6 @@ int main(void)
 
   BSP_LED_Init(LED_BLUE);
   BSP_LED_Init(LED_GREEN);
-  // logger_init();
-  // i2c_init();
 
   LOG_DEBUG("COM Started \r\n");
 
