@@ -1,3 +1,5 @@
 #!/bin/bash
 
-gcc test.c -o test
+cd development/applications/com/build
+
+make
