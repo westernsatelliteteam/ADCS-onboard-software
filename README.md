@@ -2,7 +2,6 @@
 
 ## Requirements
 - install [docker desktop](https://www.docker.com/products/docker-desktop)
-- install [st-link](https://github.com/stlink-org/stlink)
 
 ## Setup
 
@@ -12,8 +11,7 @@
 
 
 - From Top-Level Folder:
-- run `make nucleo`
-- run `make flash_nucleo` to flash nucleo board with st-utils
+- run `docker compose up` to compile the project
 
 ## Project Structure
 
