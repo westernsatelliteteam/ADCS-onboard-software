@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  stm32l4:
+    container_name: stm32xxl4
+    restart: "no"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/stm32
