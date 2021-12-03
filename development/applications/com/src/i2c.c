@@ -65,10 +65,12 @@ int i2c_init(void)
 
   sensors_i2c_handle.Instance             = WST_I2C;
 
-  sensors_i2c_handle.Init.OwnAddress1     = 0xFF;
-  sensors_i2c_handle.Init.AddressingMode  = I2C_ADDRESSINGMODE_7BIT;
+  sensors_i2c_handle.Init.Timing = 0x00101A26;
+  sensors_i2c_handle.Init.OwnAddress1 = 0;
+  sensors_i2c_handle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   sensors_i2c_handle.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-  sensors_i2c_handle.Init.OwnAddress2     = 0xFF;
+  sensors_i2c_handle.Init.OwnAddress2 = 0;
+  sensors_i2c_handle.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
   sensors_i2c_handle.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
   sensors_i2c_handle.Init.NoStretchMode   = I2C_NOSTRETCH_DISABLE;
 
