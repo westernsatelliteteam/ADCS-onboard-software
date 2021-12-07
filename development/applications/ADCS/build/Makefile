@@ -48,6 +48,8 @@ $(PROJ_DIR)/src/main.c \
 $(PROJ_DIR)/src/logger.c \
 $(PROJ_DIR)/src/i2c.c \
 $(PROJ_DIR)/src/uart.c \
+$(PROJ_DIR)/src/imu.c \
+$(PROJ_DIR)/src/sensors.c \
 $(PROJ_DIR)/src/system_time.c \
 $(PROJ_DIR)/src/stm32l4xx_it.c \
 $(PROJ_DIR)/src/system_stm32l4xx.c \

@@ -75,5 +75,5 @@ void DebugMon_Handler(void)
 void SysTick_Handler(void)
 {
   HAL_IncTick();
-  com_sysTickHandler();
+  ADCS_sysTickHandler();
 }

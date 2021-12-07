@@ -11,6 +11,10 @@
 
 #include "logger.h"
 
+#define sensors_TASK_PRIORITY        (tskIDLE_PRIORITY + 5)
+
+#define SENSORS_STACK_SIZE           512
+
 #define RTOS_ERR_CHECK(x)   \
   do {                      \
     int retval = (x);       \
@@ -23,6 +27,6 @@ void delay_ms(uint32_t ms);
 void delay_us(uint32_t us);
 void rtos_delay_ms(uint32_t ms);
 
-extern void com_sysTickHandler(void);
+extern void ADCS_sysTickHandler(void);
 
 #endif  // ADCS_H

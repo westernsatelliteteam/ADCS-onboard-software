@@ -9,7 +9,8 @@
 #include "i2c.h"
 #include "uart.h"
 #include "system_time.h"
-#include "icm20948_api.h"
+
+#include "sensors.h"
 
 #define mainTASK_PRIORITY    (tskIDLE_PRIORITY + 1)
 
@@ -43,74 +44,13 @@ void rtos_delay_ms(uint32_t ms)
   }
 }
 
-icm20948_return_code_t usr_write(uint8_t addr, uint8_t *data, uint32_t len) {
-  icm20948_return_code_t ret = ICM20948_RET_OK;
-  i2c_imu_write(0x68, (uint8_t)addr, data, (uint16_t)len);
-  return ret;
-}
-
-icm20948_return_code_t usr_read(uint8_t addr, uint8_t *data, uint32_t len) {
-  icm20948_return_code_t ret = ICM20948_RET_OK;
-  i2c_imu_read(0x68, (uint8_t)addr, data, (uint16_t)len);
-  return ret;
-}
-
-void usr_delay_us(uint32_t period) {
-  delay_us(period);
-}
-
-
 void main_task(void *arg)
 {
-  uint32_t time = 0;
-  char msg[] = "Hello World!\r\n";
-
-  icm20948_return_code_t ret = ICM20948_RET_OK;
-  icm20948_settings_t settings;
-  icm20948_gyro_t gyro_data;
-  icm20948_accel_t accel_data;
-
-  // Init the device function pointers
-  ret = icm20948_init(usr_read, usr_write, usr_delay_us);
-
-  // Check if we successfully stored the function poiners provided
-  if( ret == ICM20948_RET_OK ) {
-      // Enable the Gyro
-      settings.gyro.en = ICM20948_MOD_ENABLED;
-      // Select the +-20000dps range
-      settings.gyro.fs = ICM20948_GYRO_FS_SEL_2000DPS;
-      // Enable the Accel
-      settings.accel.en = ICM20948_MOD_ENABLED;
-      // Select the +-2G range
-      settings.accel.fs = ICM20948_ACCEL_FS_SEL_2G;
-      ret = icm20948_applySettings(&settings);
-  }
-
   while(1) {
-    // LOG_DEBUG(msg);
-
-    // LOG_DEBUG("%u\r\n", system_time_cmp_ms(time, system_time_get()));
 
     BSP_LED_Toggle(LED_BLUE);
 
-    time = system_time_get();
-
-    // Retrieve the Gyro data and store it in our gyro_data struct
-    // Output is in dps (Degress per second)
-    ret |= icm20948_getGyroData(&gyro_data);
-    // Retrieve the Accel data and store it in our accel_data struct
-    // Output is in mG
-    ret |= icm20948_getAccelData(&accel_data);
-
-    LOG_DEBUG("gyro: %d, %d, %d accel: %d, %d, %d\r\n",
-            gyro_data.x,
-            gyro_data.y,
-            gyro_data.z,
-            accel_data.x,
-            accel_data.y,
-            accel_data.z);
-
-    rtos_delay_ms(50);
+    rtos_delay_ms(500);
   }
 }
 
@@ -188,7 +128,7 @@ int main(void)
   BSP_LED_Init(LED_GREEN);
   BSP_LED_Init(LED_RED);
 
-  LOG_DEBUG("COM Started \r\n");
+  LOG_DEBUG("ADCS Started \r\n");
 
   taskStatus = xTaskCreate(main_task,
                           "main_task",
@@ -199,13 +139,17 @@ int main(void)
 
   RTOS_ERR_CHECK(taskStatus);
 
+  sensors_task_setup();
+
+  sensors_task_start();
+
   os_start();
 
   /* Should never reach here */
   while (1);
 }
 
-void com_sysTickHandler(void)
+void ADCS_sysTickHandler(void)
 {
   if (os_started) {
     xPortSysTickHandler();
