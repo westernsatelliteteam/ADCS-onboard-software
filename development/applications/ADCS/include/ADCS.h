@@ -1,5 +1,5 @@
-#ifndef COM_H
-#define COM_H
+#ifndef ADCS_H
+#define ADCS_H
 
 #include "FreeRTOS.h"
 #include "task.h"
@@ -25,4 +25,4 @@ void rtos_delay_ms(uint32_t ms);
 
 extern void com_sysTickHandler(void);
 
-#endif  // HEDWIG_H
+#endif  // ADCS_H

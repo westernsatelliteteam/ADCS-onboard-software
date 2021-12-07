@@ -1,6 +1,6 @@
 #include "stm32l4xx_it.h"
 #include "stm32l4xx_hal.h"
-#include "com.h"
+#include "ADCS.h"
 
 /**
   * @brief  This function handles NMI exception.

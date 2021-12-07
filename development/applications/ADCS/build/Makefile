@@ -1,4 +1,4 @@
-TARGET = COM
+TARGET = ADCS
 DEBUG = 1
 BUILD_DIR = _build
 BUILD_CONFIG ?= DEBUG
@@ -51,7 +51,7 @@ $(PROJ_DIR)/src/uart.c \
 $(PROJ_DIR)/src/system_time.c \
 $(PROJ_DIR)/src/stm32l4xx_it.c \
 $(PROJ_DIR)/src/system_stm32l4xx.c \
-$(DRV_ROOT)/icm20948/src/icm20948.c \
+$(DRV_ROOT)/icm20948/icm20948.c \
 
 ifeq ($(BOARD_VERSION), NUCLEO)
 C_SOURCES += $(BSP_DIR)/stm32l4xx_nucleo_144.c
@@ -78,8 +78,7 @@ C_INCLUDES += \
 			-I$(CMSIS_DIR)/Include \
  			-I$(FREERTOS_ROOT)/include \
  			-I$(FREERTOS_PORTABLE) \
- 			-I$(DRV_ROOT)/icm20948/src \
- 			-I$(DRV_ROOT)/icm20948/inc \
+ 			-I$(DRV_ROOT)/icm20948 \
 
 # macros for gcc
 # AS defines
